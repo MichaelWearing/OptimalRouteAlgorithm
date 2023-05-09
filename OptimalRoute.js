@@ -1,7 +1,7 @@
 const fs = require("fs");
 const csv = require("csv-parser");
 
-const inputFile = "./inut.csv";
+const inputFile = "./input.csv";
 const outputFile = "./output.csv";
 
 const products = {};
