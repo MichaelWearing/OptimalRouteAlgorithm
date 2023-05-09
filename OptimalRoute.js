@@ -46,27 +46,16 @@ fs.access(inputFile, (err) => {
     .on("end", () => {
       for (let bay = 0; bay < 52; bay++) {
         for (let shelf = 0; shelf < 10; shelf++) {
+          let bayAndShelfNode;
           if (bay >= 26) {
-            const bayAndShelfNode = `A${String.fromCharCode(65 + bay - 26)} ${
+            bayAndShelfNode = `A${String.fromCharCode(65 + bay - 26)} ${
               shelf + 1
             }`;
-            const productToBePickedUp = products[bayAndShelfNode];
-            createWriteString(
-              bayAndShelfNode,
-              productToBePickedUp,
-              outputStream
-            );
           } else {
-            const bayAndShelfNode = `${String.fromCharCode(65 + bay)} ${
-              shelf + 1
-            }`;
-            const productToBePickedUp = products[bayAndShelfNode];
-            createWriteString(
-              bayAndShelfNode,
-              productToBePickedUp,
-              outputStream
-            );
+            bayAndShelfNode = `${String.fromCharCode(65 + bay)} ${shelf + 1}`;
           }
+          const productToBePickedUp = products[bayAndShelfNode];
+          createWriteString(bayAndShelfNode, productToBePickedUp, outputStream);
         }
       }
 
